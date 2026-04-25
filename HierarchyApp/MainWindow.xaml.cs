@@ -22,7 +22,7 @@ public sealed partial class MainWindow : Window
         var pageType = tag switch
         {
             "CompaDS" => typeof(CompaDSPage),
-            _ => null
+            _         => null
         };
 
         if (pageType is not null && ContentFrame.CurrentSourcePageType != pageType)

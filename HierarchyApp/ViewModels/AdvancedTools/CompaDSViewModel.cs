@@ -8,6 +8,8 @@ namespace HierarchyApp.ViewModels.AdvancedTools;
 
 public partial class CompaDSViewModel : ObservableObject
 {
+    // ── Files ────────────────────────────────────────────────────────────────
+
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(OldFileName))]
     [NotifyPropertyChangedFor(nameof(HasOldFile))]
@@ -20,6 +22,13 @@ public partial class CompaDSViewModel : ObservableObject
     [NotifyCanExecuteChangedFor(nameof(CompareCommand))]
     private StorageFile? _newFile;
 
+    public string OldFileName => OldFile?.Name ?? string.Empty;
+    public string NewFileName => NewFile?.Name ?? string.Empty;
+    public bool HasOldFile    => OldFile is not null;
+    public bool HasNewFile    => NewFile is not null;
+
+    // ── Thresholds ───────────────────────────────────────────────────────────
+
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(CompareCommand))]
     private double _deltaValueThreshold = double.NaN;
@@ -28,38 +37,36 @@ public partial class CompaDSViewModel : ObservableObject
     [NotifyCanExecuteChangedFor(nameof(CompareCommand))]
     private double _deltaPercentThreshold = double.NaN;
 
-    public string OldFileName => OldFile?.Name ?? string.Empty;
-    public string NewFileName => NewFile?.Name ?? string.Empty;
-    public bool HasOldFile => OldFile is not null;
-    public bool HasNewFile => NewFile is not null;
+    // ── Commands ─────────────────────────────────────────────────────────────
 
     private bool CanCompare() =>
         OldFile is not null &&
         NewFile is not null &&
-        !double.IsNaN(DeltaValueThreshold) && DeltaValueThreshold > 0 &&
+        !double.IsNaN(DeltaValueThreshold)   && DeltaValueThreshold   > 0 &&
         !double.IsNaN(DeltaPercentThreshold) && DeltaPercentThreshold > 0;
 
     [RelayCommand]
     private async Task PickOldFileAsync()
     {
         var file = await PickFileAsync();
-        if (file is not null)
-            OldFile = file;
+        if (file is not null) OldFile = file;
     }
 
     [RelayCommand]
     private async Task PickNewFileAsync()
     {
         var file = await PickFileAsync();
-        if (file is not null)
-            NewFile = file;
+        if (file is not null) NewFile = file;
     }
 
     [RelayCommand(CanExecute = nameof(CanCompare))]
     private async Task CompareAsync()
     {
+        // Comparison logic — next US
         await Task.CompletedTask;
     }
+
+    // ── Helpers ──────────────────────────────────────────────────────────────
 
     private static async Task<StorageFile?> PickFileAsync()
     {

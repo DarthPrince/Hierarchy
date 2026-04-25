@@ -16,10 +16,8 @@
 
         <NavigationView.MenuItems>
 
-            <NavigationViewItem
-                Content="Projects"
-                SelectsOnInvoked="False"
-                IsExpanded="True">
+            <!-- Projects -->
+            <NavigationViewItem Content="Projects" SelectsOnInvoked="False" IsExpanded="True">
                 <NavigationViewItem.Icon>
                     <FontIcon Glyph="&#xE8B7;" />
                 </NavigationViewItem.Icon>
@@ -32,10 +30,8 @@
                 </NavigationViewItem.MenuItems>
             </NavigationViewItem>
 
-            <NavigationViewItem
-                Content="Advanced Tools"
-                SelectsOnInvoked="False"
-                IsExpanded="True">
+            <!-- Advanced Tools -->
+            <NavigationViewItem Content="Advanced Tools" SelectsOnInvoked="False" IsExpanded="True">
                 <NavigationViewItem.Icon>
                     <FontIcon Glyph="&#xEC7A;" />
                 </NavigationViewItem.Icon>
@@ -48,10 +44,8 @@
                 </NavigationViewItem.MenuItems>
             </NavigationViewItem>
 
-            <NavigationViewItem
-                Content="Repositories"
-                SelectsOnInvoked="False"
-                IsExpanded="True">
+            <!-- Repositories -->
+            <NavigationViewItem Content="Repositories" SelectsOnInvoked="False" IsExpanded="True">
                 <NavigationViewItem.Icon>
                     <FontIcon Glyph="&#xE8F1;" />
                 </NavigationViewItem.Icon>

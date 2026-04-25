@@ -7,16 +7,16 @@
     mc:Ignorable="d"
     Background="#F0F2F5">
 
-    <ScrollViewer>
+    <ScrollViewer Padding="0">
         <StackPanel Padding="32,24" Spacing="20" MaxWidth="1200">
 
-            <!-- Header -->
+            <!-- ═══ HEADER ═══════════════════════════════════════════════════ -->
             <StackPanel Spacing="4">
                 <TextBlock
                     Text="CompaDS"
                     FontSize="22"
                     FontWeight="SemiBold"
-                    Foreground="#1A1A2E" />
+                    Foreground="#111827" />
                 <TextBlock
                     Text="Compare two PIP DS revisions and identify changed and new support loads"
                     FontSize="13"
@@ -24,14 +24,15 @@
                     TextWrapping="Wrap" />
             </StackPanel>
 
-            <!-- Input Files -->
+            <!-- ═══ INPUT FILES ══════════════════════════════════════════════ -->
             <Border Background="White" CornerRadius="8" Padding="24,20">
                 <StackPanel Spacing="16">
+
                     <TextBlock
                         Text="Input Files"
                         FontSize="15"
                         FontWeight="SemiBold"
-                        Foreground="#1A1A2E" />
+                        Foreground="#111827" />
 
                     <Grid ColumnSpacing="16">
                         <Grid.ColumnDefinitions>
@@ -41,7 +42,11 @@
 
                         <!-- OLD PIP DS file -->
                         <StackPanel Grid.Column="0" Spacing="6">
-                            <TextBlock Text="OLD PIP DS file" FontSize="13" FontWeight="SemiBold" Foreground="#374151" />
+                            <TextBlock
+                                Text="OLD PIP DS file"
+                                FontSize="13"
+                                FontWeight="SemiBold"
+                                Foreground="#374151" />
                             <Button
                                 Command="{x:Bind ViewModel.PickOldFileCommand}"
                                 HorizontalAlignment="Stretch"
@@ -50,25 +55,52 @@
                                 BorderThickness="0"
                                 Padding="0">
                                 <Grid MinHeight="52">
-                                    <Rectangle Stroke="#2563EB" StrokeThickness="1.5" StrokeDashArray="5,3" RadiusX="6" RadiusY="6" Fill="White" />
+                                    <Rectangle
+                                        Stroke="#2563EB"
+                                        StrokeThickness="1.5"
+                                        StrokeDashArray="5,3"
+                                        RadiusX="6" RadiusY="6"
+                                        Fill="White" />
                                     <Grid Margin="14,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
-                                        <FontIcon Grid.Column="0" Glyph="&#xE8A5;" FontSize="18" Foreground="#2563EB" VerticalAlignment="Center" Margin="0,0,10,0" />
+                                        <!-- File icon -->
+                                        <FontIcon
+                                            Grid.Column="0"
+                                            Glyph="&#xE8A5;"
+                                            FontSize="18"
+                                            Foreground="#2563EB"
+                                            VerticalAlignment="Center"
+                                            Margin="0,0,10,0" />
+                                        <!-- Placeholder -->
                                         <TextBlock
                                             Grid.Column="1"
                                             Text="Click to upload OLD file"
                                             Visibility="{x:Bind ViewModel.HasOldFile, Mode=OneWay, Converter={StaticResource InverseBoolToVisibilityConverter}}"
-                                            FontSize="13" Foreground="#9CA3AF" VerticalAlignment="Center" />
+                                            FontSize="13"
+                                            Foreground="#9CA3AF"
+                                            VerticalAlignment="Center" />
+                                        <!-- Filename once loaded -->
                                         <TextBlock
                                             Grid.Column="1"
                                             Text="{x:Bind ViewModel.OldFileName, Mode=OneWay}"
                                             Visibility="{x:Bind ViewModel.HasOldFile, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
-                                            FontSize="13" FontWeight="Medium" Foreground="#111827" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
-                                        <FontIcon Grid.Column="2" Glyph="&#xE898;" FontSize="16" Foreground="#6B7280" VerticalAlignment="Center" Margin="10,0,0,0" />
+                                            FontSize="13"
+                                            FontWeight="Medium"
+                                            Foreground="#111827"
+                                            VerticalAlignment="Center"
+                                            TextTrimming="CharacterEllipsis" />
+                                        <!-- Upload icon -->
+                                        <FontIcon
+                                            Grid.Column="2"
+                                            Glyph="&#xE898;"
+                                            FontSize="16"
+                                            Foreground="#6B7280"
+                                            VerticalAlignment="Center"
+                                            Margin="10,0,0,0" />
                                     </Grid>
                                 </Grid>
                             </Button>
@@ -76,7 +108,11 @@
 
                         <!-- NEW PIP DS file -->
                         <StackPanel Grid.Column="1" Spacing="6">
-                            <TextBlock Text="NEW PIP DS file" FontSize="13" FontWeight="SemiBold" Foreground="#374151" />
+                            <TextBlock
+                                Text="NEW PIP DS file"
+                                FontSize="13"
+                                FontWeight="SemiBold"
+                                Foreground="#374151" />
                             <Button
                                 Command="{x:Bind ViewModel.PickNewFileCommand}"
                                 HorizontalAlignment="Stretch"
@@ -85,37 +121,66 @@
                                 BorderThickness="0"
                                 Padding="0">
                                 <Grid MinHeight="52">
-                                    <Rectangle Stroke="#2563EB" StrokeThickness="1.5" StrokeDashArray="5,3" RadiusX="6" RadiusY="6" Fill="White" />
+                                    <Rectangle
+                                        Stroke="#2563EB"
+                                        StrokeThickness="1.5"
+                                        StrokeDashArray="5,3"
+                                        RadiusX="6" RadiusY="6"
+                                        Fill="White" />
                                     <Grid Margin="14,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
-                                        <FontIcon Grid.Column="0" Glyph="&#xE8A5;" FontSize="18" Foreground="#2563EB" VerticalAlignment="Center" Margin="0,0,10,0" />
+                                        <FontIcon
+                                            Grid.Column="0"
+                                            Glyph="&#xE8A5;"
+                                            FontSize="18"
+                                            Foreground="#2563EB"
+                                            VerticalAlignment="Center"
+                                            Margin="0,0,10,0" />
                                         <TextBlock
                                             Grid.Column="1"
                                             Text="Click to upload NEW file"
                                             Visibility="{x:Bind ViewModel.HasNewFile, Mode=OneWay, Converter={StaticResource InverseBoolToVisibilityConverter}}"
-                                            FontSize="13" Foreground="#9CA3AF" VerticalAlignment="Center" />
+                                            FontSize="13"
+                                            Foreground="#9CA3AF"
+                                            VerticalAlignment="Center" />
                                         <TextBlock
                                             Grid.Column="1"
                                             Text="{x:Bind ViewModel.NewFileName, Mode=OneWay}"
                                             Visibility="{x:Bind ViewModel.HasNewFile, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
-                                            FontSize="13" FontWeight="Medium" Foreground="#111827" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
-                                        <FontIcon Grid.Column="2" Glyph="&#xE898;" FontSize="16" Foreground="#6B7280" VerticalAlignment="Center" Margin="10,0,0,0" />
+                                            FontSize="13"
+                                            FontWeight="Medium"
+                                            Foreground="#111827"
+                                            VerticalAlignment="Center"
+                                            TextTrimming="CharacterEllipsis" />
+                                        <FontIcon
+                                            Grid.Column="2"
+                                            Glyph="&#xE898;"
+                                            FontSize="16"
+                                            Foreground="#6B7280"
+                                            VerticalAlignment="Center"
+                                            Margin="10,0,0,0" />
                                     </Grid>
                                 </Grid>
                             </Button>
                         </StackPanel>
+
                     </Grid>
                 </StackPanel>
             </Border>
 
-            <!-- Thresholds -->
+            <!-- ═══ THRESHOLDS ═══════════════════════════════════════════════ -->
             <Border Background="White" CornerRadius="8" Padding="24,20">
                 <StackPanel Spacing="16">
-                    <TextBlock Text="Thresholds" FontSize="15" FontWeight="SemiBold" Foreground="#1A1A2E" />
+
+                    <TextBlock
+                        Text="Thresholds"
+                        FontSize="15"
+                        FontWeight="SemiBold"
+                        Foreground="#111827" />
 
                     <Grid ColumnSpacing="16">
                         <Grid.ColumnDefinitions>
@@ -123,8 +188,13 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
+                        <!-- Delta Value Threshold (kN) -->
                         <StackPanel Grid.Column="0" Spacing="6">
-                            <TextBlock Text="Delta Value Threshold (kN)" FontSize="13" FontWeight="SemiBold" Foreground="#374151" />
+                            <TextBlock
+                                Text="Delta Value Threshold (kN)"
+                                FontSize="13"
+                                FontWeight="SemiBold"
+                                Foreground="#374151" />
                             <NumberBox
                                 Value="{x:Bind ViewModel.DeltaValueThreshold, Mode=TwoWay}"
                                 PlaceholderText="e.g., 5"
@@ -134,8 +204,13 @@
                                 HorizontalAlignment="Stretch" />
                         </StackPanel>
 
+                        <!-- Delta % Threshold -->
                         <StackPanel Grid.Column="1" Spacing="6">
-                            <TextBlock Text="Delta % Threshold" FontSize="13" FontWeight="SemiBold" Foreground="#374151" />
+                            <TextBlock
+                                Text="Delta % Threshold"
+                                FontSize="13"
+                                FontWeight="SemiBold"
+                                Foreground="#374151" />
                             <NumberBox
                                 Value="{x:Bind ViewModel.DeltaPercentThreshold, Mode=TwoWay}"
                                 PlaceholderText="e.g., 10"
@@ -151,10 +226,11 @@
                         FontSize="12"
                         Foreground="#6B7280"
                         TextWrapping="Wrap" />
+
                 </StackPanel>
             </Border>
 
-            <!-- Compare Button -->
+            <!-- ═══ COMPARE BUTTON ════════════════════════════════════════════ -->
             <Button
                 Command="{x:Bind ViewModel.CompareCommand}"
                 Content="Compare"

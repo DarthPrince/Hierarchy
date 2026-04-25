@@ -1,0 +1,11 @@
+obj/
+bin/
+.vs/
+*.user
+*.suo
+AppPackages/
+BundleArtifacts/
+_pkginfo.txt
+*.map
+.DS_Store
+Thumbs.db

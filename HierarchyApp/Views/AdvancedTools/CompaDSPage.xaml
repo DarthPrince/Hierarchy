@@ -1,0 +1,204 @@
+<Page
+    x:Class="HierarchyApp.Views.AdvancedTools.CompaDSPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <Style x:Key="UploadCardStyle" TargetType="Border">
+            <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}" />
+            <Setter Property="Padding" Value="24" />
+            <Setter Property="MinHeight" Value="140" />
+        </Style>
+    </Page.Resources>
+
+    <ScrollViewer>
+        <StackPanel Padding="36,28" Spacing="28" MaxWidth="980">
+
+            <!-- ── Header ── -->
+            <StackPanel Spacing="6">
+                <TextBlock
+                    Text="CompaDS"
+                    Style="{StaticResource TitleLargeTextBlockStyle}"
+                    FontWeight="SemiBold" />
+                <TextBlock
+                    Text="Compare two PIP DS revisions and identify changed and new support loads"
+                    Style="{StaticResource BodyTextBlockStyle}"
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+
+            <Border Height="1" Background="{ThemeResource DividerStrokeColorDefaultBrush}" />
+
+            <!-- ── Input Files ── -->
+            <StackPanel Spacing="16">
+                <TextBlock
+                    Text="Input Files"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
+                    FontWeight="SemiBold" />
+
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- OLD PIP DS file -->
+                    <StackPanel Grid.Column="0" Spacing="8">
+                        <TextBlock
+                            Text="OLD PIP DS file"
+                            Style="{StaticResource BodyStrongTextBlockStyle}" />
+                        <Button
+                            Command="{x:Bind ViewModel.PickOldFileCommand}"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Padding="0">
+                            <Border Style="{StaticResource UploadCardStyle}">
+                                <StackPanel
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Spacing="10">
+                                    <FontIcon
+                                        Glyph="&#xE8A5;"
+                                        FontSize="28"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        HorizontalAlignment="Center" />
+                                    <TextBlock
+                                        Text="Click to upload OLD file"
+                                        Visibility="{x:Bind ViewModel.HasOldFile, Mode=OneWay, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                        Style="{StaticResource BodyTextBlockStyle}"
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        HorizontalAlignment="Center" />
+                                    <TextBlock
+                                        Text="{x:Bind ViewModel.OldFileName, Mode=OneWay}"
+                                        Visibility="{x:Bind ViewModel.HasOldFile, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                                        Style="{StaticResource BodyStrongTextBlockStyle}"
+                                        HorizontalAlignment="Center"
+                                        TextWrapping="Wrap"
+                                        TextAlignment="Center" />
+                                </StackPanel>
+                            </Border>
+                        </Button>
+                    </StackPanel>
+
+                    <!-- NEW PIP DS file -->
+                    <StackPanel Grid.Column="1" Spacing="8">
+                        <TextBlock
+                            Text="NEW PIP DS file"
+                            Style="{StaticResource BodyStrongTextBlockStyle}" />
+                        <Button
+                            Command="{x:Bind ViewModel.PickNewFileCommand}"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Padding="0">
+                            <Border Style="{StaticResource UploadCardStyle}">
+                                <StackPanel
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Spacing="10">
+                                    <FontIcon
+                                        Glyph="&#xE8A5;"
+                                        FontSize="28"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        HorizontalAlignment="Center" />
+                                    <TextBlock
+                                        Text="Click to upload NEW file"
+                                        Visibility="{x:Bind ViewModel.HasNewFile, Mode=OneWay, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                                        Style="{StaticResource BodyTextBlockStyle}"
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        HorizontalAlignment="Center" />
+                                    <TextBlock
+                                        Text="{x:Bind ViewModel.NewFileName, Mode=OneWay}"
+                                        Visibility="{x:Bind ViewModel.HasNewFile, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                                        Style="{StaticResource BodyStrongTextBlockStyle}"
+                                        HorizontalAlignment="Center"
+                                        TextWrapping="Wrap"
+                                        TextAlignment="Center" />
+                                </StackPanel>
+                            </Border>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+
+            <Border Height="1" Background="{ThemeResource DividerStrokeColorDefaultBrush}" />
+
+            <!-- ── Thresholds ── -->
+            <StackPanel Spacing="16">
+                <TextBlock
+                    Text="Thresholds"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
+                    FontWeight="SemiBold" />
+
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Delta Value Threshold (kN) -->
+                    <StackPanel Grid.Column="0" Spacing="8">
+                        <StackPanel Orientation="Horizontal" Spacing="2">
+                            <TextBlock
+                                Text="Delta Value Threshold (kN)"
+                                Style="{StaticResource BodyStrongTextBlockStyle}" />
+                            <TextBlock
+                                Text=" *"
+                                Style="{StaticResource BodyStrongTextBlockStyle}"
+                                Foreground="{ThemeResource SystemFillColorCriticalBrush}" />
+                        </StackPanel>
+                        <NumberBox
+                            Value="{x:Bind ViewModel.DeltaValueThreshold, Mode=TwoWay}"
+                            PlaceholderText="e.g., 5"
+                            Minimum="0"
+                            SpinButtonPlacementMode="Hidden"
+                            ValidationMode="InvalidInputOverwritten"
+                            HorizontalAlignment="Stretch" />
+                    </StackPanel>
+
+                    <!-- Delta % Threshold -->
+                    <StackPanel Grid.Column="1" Spacing="8">
+                        <StackPanel Orientation="Horizontal" Spacing="2">
+                            <TextBlock
+                                Text="Delta % Threshold"
+                                Style="{StaticResource BodyStrongTextBlockStyle}" />
+                            <TextBlock
+                                Text=" *"
+                                Style="{StaticResource BodyStrongTextBlockStyle}"
+                                Foreground="{ThemeResource SystemFillColorCriticalBrush}" />
+                        </StackPanel>
+                        <NumberBox
+                            Value="{x:Bind ViewModel.DeltaPercentThreshold, Mode=TwoWay}"
+                            PlaceholderText="e.g., 10"
+                            Minimum="0"
+                            SpinButtonPlacementMode="Inline"
+                            ValidationMode="InvalidInputOverwritten"
+                            HorizontalAlignment="Stretch" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+
+            <!-- ── Compare Button ── -->
+            <Button
+                Command="{x:Bind ViewModel.CompareCommand}"
+                Content="Compare"
+                Style="{StaticResource AccentButtonStyle}"
+                HorizontalAlignment="Right"
+                MinWidth="130"
+                Padding="24,8" />
+
+        </StackPanel>
+    </ScrollViewer>
+</Page>

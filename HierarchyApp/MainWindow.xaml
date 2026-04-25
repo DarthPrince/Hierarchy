@@ -1,0 +1,40 @@
+<Window
+    x:Class="HierarchyApp.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="HierarchyApp">
+
+    <NavigationView
+        x:Name="NavView"
+        SelectionChanged="NavView_SelectionChanged"
+        IsSettingsVisible="False"
+        PaneDisplayMode="Left"
+        OpenPaneLength="220">
+
+        <NavigationView.MenuItems>
+            <NavigationViewItem
+                Content="Advanced Tools"
+                Tag="AdvancedTools"
+                IsExpanded="True"
+                SelectsOnInvoked="False">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xEC7A;" />
+                </NavigationViewItem.Icon>
+                <NavigationViewItem.MenuItems>
+                    <NavigationViewItem
+                        Content="CompaDS"
+                        Tag="CompaDS">
+                        <NavigationViewItem.Icon>
+                            <FontIcon Glyph="&#xE8F1;" />
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
+                </NavigationViewItem.MenuItems>
+            </NavigationViewItem>
+        </NavigationView.MenuItems>
+
+        <Frame x:Name="ContentFrame" />
+    </NavigationView>
+</Window>

@@ -16,30 +16,26 @@
 
         <NavigationView.MenuItems>
 
-            <!-- Projects -->
             <NavigationViewItem
                 Content="Projects"
-                Tag="Projects"
-                IsExpanded="True"
-                SelectsOnInvoked="False">
+                SelectsOnInvoked="False"
+                IsExpanded="True">
                 <NavigationViewItem.Icon>
                     <FontIcon Glyph="&#xE8B7;" />
                 </NavigationViewItem.Icon>
                 <NavigationViewItem.MenuItems>
-                    <NavigationViewItem Content="Identification" Tag="Identification" />
-                    <NavigationViewItem Content="Ship"           Tag="Ship" />
-                    <NavigationViewItem Content="PIP HYP"        Tag="PipHyp" />
-                    <NavigationViewItem Content="Allowable"      Tag="Allowable" />
-                    <NavigationViewItem Content="Models"         Tag="Models" />
+                    <NavigationViewItem Content="Identification"  Tag="Identification" />
+                    <NavigationViewItem Content="Ship"            Tag="Ship" />
+                    <NavigationViewItem Content="PIP HYP"         Tag="PipHyp" />
+                    <NavigationViewItem Content="Allowable"       Tag="Allowable" />
+                    <NavigationViewItem Content="Models"          Tag="Models" />
                 </NavigationViewItem.MenuItems>
             </NavigationViewItem>
 
-            <!-- Advanced Tools -->
             <NavigationViewItem
                 Content="Advanced Tools"
-                Tag="AdvancedTools"
-                IsExpanded="True"
-                SelectsOnInvoked="False">
+                SelectsOnInvoked="False"
+                IsExpanded="True">
                 <NavigationViewItem.Icon>
                     <FontIcon Glyph="&#xEC7A;" />
                 </NavigationViewItem.Icon>
@@ -52,12 +48,10 @@
                 </NavigationViewItem.MenuItems>
             </NavigationViewItem>
 
-            <!-- Repositories -->
             <NavigationViewItem
                 Content="Repositories"
-                Tag="Repositories"
-                IsExpanded="True"
-                SelectsOnInvoked="False">
+                SelectsOnInvoked="False"
+                IsExpanded="True">
                 <NavigationViewItem.Icon>
                     <FontIcon Glyph="&#xE8F1;" />
                 </NavigationViewItem.Icon>

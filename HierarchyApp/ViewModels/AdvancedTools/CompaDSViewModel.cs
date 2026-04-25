@@ -58,8 +58,6 @@ public partial class CompaDSViewModel : ObservableObject
     [RelayCommand(CanExecute = nameof(CanCompare))]
     private async Task CompareAsync()
     {
-        // Validate that both files belong to the same project and model
-        // before running the comparison logic (next US).
         await Task.CompletedTask;
     }
 

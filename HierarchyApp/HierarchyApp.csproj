@@ -11,6 +11,9 @@
     <WindowsPackageType>None</WindowsPackageType>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Skips GetVCInstallPath target from WindowsAppSDK (no C++ workload required) -->
+    <VCInstallPath32>none</VCInstallPath32>
+    <VCInstallPath64>none</VCInstallPath64>
   </PropertyGroup>
 
   <ItemGroup>

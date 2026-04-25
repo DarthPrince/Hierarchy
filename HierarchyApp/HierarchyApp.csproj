@@ -12,6 +12,8 @@
     <EnableMsixTooling>true</EnableMsixTooling>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Skip MSVC detection — pure C# project, no native C++ components -->
+    <WindowsAppSdkSelfContained>false</WindowsAppSdkSelfContained>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,5 +21,12 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
   </ItemGroup>
+
+  <!-- Override GetLatestMSVCVersion: not needed for pure C# WinUI 3 projects -->
+  <Target Name="GetLatestMSVCVersion">
+    <PropertyGroup>
+      <LatestMSVCVersion Condition="'$(LatestMSVCVersion)' == ''">0</LatestMSVCVersion>
+    </PropertyGroup>
+  </Target>
 
 </Project>
